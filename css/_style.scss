@@ -1,0 +1,263 @@
+h1 {
+  font-size: 4em;
+  padding: 1em 0px;
+  color: white;
+}
+h2 {
+  font-size: 2em;
+  padding: 0.4em 0px;
+  color: white;
+}
+p {
+  color: white;
+  font-size: 1em;
+}
+span {
+  color: $purple;
+}
+.container-fluid > .row {
+  padding: 0px 15px;
+}
+.table {
+  width: 100%;
+}
+
+
+/* --------------------------------------------------------------------
+                              First row
+---------------------------------------------------------------------*/
+header {
+  text-align: center;
+  background-image: url("images/Header/base/background.png");
+  background-position: center;
+  background-size: cover;
+  #title {
+    margin-bottom: 5em;
+  }
+  .row {
+    .headerNav:first-child {
+      margin-right: 33.33333%;
+    }
+    .hexagon {
+      position: relative;
+      img {
+        &:first-child {
+          width: 85%;
+        }
+        &:nth-child(2) {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    #scroller {
+      margin-bottom: 2em;
+      img {
+        width: auto;
+      }
+    }
+  }
+}
+
+/* --------------------------------------------------------------------
+                              Second row
+---------------------------------------------------------------------*/
+
+.container-fluid > .row:nth-child(2) {
+  position: relative;
+  h1 {
+    font-size: 2em;
+    color: $grey;
+  }
+  p {
+    color: $grey;
+    display: inline-block;
+    padding: 1em 15px;
+  }
+  div:last-child {
+    text-align: right;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+  }
+}
+
+/* --------------------------------------------------------------------
+                              Third row
+---------------------------------------------------------------------*/
+
+.container-fluid > .row:nth-child(3) {
+  text-align: center;
+  background-color: $greyish;
+  padding: 9em 0px;
+  h2 {
+    color: $grey;
+  }
+  p {
+    color: $grey;
+    font-size: 1.5em;
+    line-height: 45px;
+    padding: 15px;
+  }
+  .hexagon {
+    position: relative;
+    img {
+      &:first-child {
+        width: 40%;
+      }
+      &:nth-child(2) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+/* --------------------------------------------------------------------
+                              Fourth row
+---------------------------------------------------------------------*/
+
+.container-fluid > .row:nth-child(4) {
+  #about {
+    position: relative;
+    margin-bottom: 6em;
+    img {
+      position: absolute;
+      &:first-child {
+        left: 0%;
+        bottom: 0%;
+      }
+      &:nth-child(3) {
+        top: 0%;
+        right: 0%;
+      }
+    }
+  }
+  text-align: center;
+  padding: 6em 0px;
+  .cell {
+    vertical-align: top;
+    text-align: left;
+    position: relative;
+    padding: 0px 15px;
+    button {
+      font-size: 1.5em;
+      color: white;
+      position: absolute;;
+      bottom: 0%;
+      background-color: $purple;
+      border: 0px;
+      border-radius: 5px;
+      padding: 15px 2em;
+    }
+  }
+  p {
+    color: grey;
+    font-size: 1.3em;
+    line-height: 45px;
+  }
+  h1 {
+    color: $grey;
+    font-size: 3em;
+    padding: 0.5em 0px;
+  }
+  .row {
+    img {
+      width: 100%;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------
+                              Fifth row
+---------------------------------------------------------------------*/
+.container-fluid > .row:nth-child(5) {
+  text-align: center;
+  background-image: url("images/Quote/base/background.png");
+  background-position: center;
+  background-size: cover;
+  padding: 6em 0px;
+  .hexagon {
+    position: relative;
+    img {
+      &:nth-child(2) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+/* --------------------------------------------------------------------
+                              Sixth row
+---------------------------------------------------------------------*/
+
+.container-fluid > .row:nth-child(6) {
+  text-align: center;
+  padding: 6em 0px;
+  #team, #nav {
+    margin-right: 41.66667%;
+  }
+  #nav {
+    margin-bottom: 6em;
+    div {
+      display: inline-block;
+      position: relative;
+      img {
+        &:nth-child(2) {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+  #team {
+    position: relative;
+    margin-bottom: 6em;
+    img {
+      position: absolute;
+      &:first-child {
+        left: 0%;
+        bottom: 0%;
+      }
+      &:nth-child(3) {
+        top: 0%;
+        right: 0%;
+      }
+    }
+  }
+  h1 {
+    font-size: 3em;
+    color: $grey;
+    padding: 0.5em 0px;
+  }
+  h2, p {
+    color: $grey;
+  }
+  .circle {
+    border: 1px solid $grey;
+    border-radius: 50%;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 1em;
+    position: relative;
+    p {
+      font-size: 1.5em;
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
