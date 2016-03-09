@@ -16,12 +16,37 @@ span {
   color: $purple;
 }
 .container-fluid > .row {
-  padding: 0px 15px;
+  padding-left: 15px;
+  padding-right : 15px;
 }
 .table {
   width: 100%;
 }
-
+.title {
+  position: relative;
+  margin-bottom: 6em;
+  display: inline-block;
+  img {
+    position: absolute;
+    &:first-child {
+      left: -10%;
+      bottom: 0%;
+    }
+    &:nth-child(3) {
+      top: 0%;
+      right: -10%;
+    }
+  }
+  h1 {
+    color: $grey;
+    padding: 0.5em 0px;
+  }
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 3em;
+    }
+  }
+}
 
 /* --------------------------------------------------------------------
                               First row
@@ -31,6 +56,7 @@ header {
   background-image: url("images/Header/base/background.png");
   background-position: center;
   background-size: cover;
+  padding: 6em 0px;
   #title {
     margin-bottom: 5em;
   }
@@ -45,6 +71,7 @@ header {
           width: 85%;
         }
         &:nth-child(2) {
+          width: 25%;
           position: absolute;
           top: 50%;
           left: 50%;
@@ -53,9 +80,15 @@ header {
       }
     }
     #scroller {
-      margin-bottom: 2em;
+      width: 10%;
+      display: inline-block;
       img {
-        width: auto;
+        &:first-child {
+          width: 100%;
+        }
+        &:nth-child(2) {
+          width: 60%;
+        }
       }
     }
   }
@@ -75,6 +108,20 @@ header {
     color: $grey;
     display: inline-block;
     padding: 1em 15px;
+  }
+  @media (max-width: 600px) {
+    p {
+      font-size: 0.7em;
+    }
+    h1 {
+      font-size: 1.5em;
+      margin: 0.5em 0px;
+    }
+  }
+  @media (max-width: 300px) {
+    h1 {
+      margin: 1em 0px;
+    }
   }
   div:last-child {
     text-align: right;
@@ -102,6 +149,15 @@ header {
     line-height: 45px;
     padding: 15px;
   }
+  @media (max-width: 500px) {
+    h2 {
+      font-size: 1.8em;
+    }
+    p {
+      font-size: 0.9em;
+      line-height: 30px;
+    }
+  }
   .hexagon {
     position: relative;
     img {
@@ -109,6 +165,7 @@ header {
         width: 40%;
       }
       &:nth-child(2) {
+        width: 15%;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -167,8 +224,31 @@ header {
     padding: 0.5em 0px;
   }
   .row {
-    img {
-      width: 100%;
+    div:not(.title) {
+      img {
+        width: 100%;
+      }
+    }
+  }
+  @media (max-width: 992px) {
+    .table {
+      display: inline-block !important;
+      .cell {
+        display: inline-block !important;
+        float: left !important;
+        padding: 15px 15px;
+        p {
+          font-size: 1.1em;
+          line-height: 30px;
+        }
+        button {
+          position: relative;
+          margin-top: 15px;
+        }
+        &:first-child {
+          text-align: center;
+        }
+      }
     }
   }
 }
@@ -185,7 +265,11 @@ header {
   .hexagon {
     position: relative;
     img {
+      &:nth-child(1) {
+        width: 20%;
+      }
       &:nth-child(2) {
+        width: 6%;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -202,8 +286,8 @@ header {
 .container-fluid > .row:nth-child(6) {
   text-align: center;
   padding: 6em 0px;
-  #team, #nav {
-    margin-right: 41.66667%;
+  .portrait {
+    width: 80%;
   }
   #nav {
     margin-bottom: 6em;
@@ -219,26 +303,6 @@ header {
         }
       }
     }
-  }
-  #team {
-    position: relative;
-    margin-bottom: 6em;
-    img {
-      position: absolute;
-      &:first-child {
-        left: 0%;
-        bottom: 0%;
-      }
-      &:nth-child(3) {
-        top: 0%;
-        right: 0%;
-      }
-    }
-  }
-  h1 {
-    font-size: 3em;
-    color: $grey;
-    padding: 0.5em 0px;
   }
   h2, p {
     color: $grey;
@@ -269,54 +333,46 @@ header {
 .container-fluid > .row:nth-child(7) {
   text-align: center;
   padding-bottom: 6em;
-  #skill {
-    position: relative;
-    margin-bottom: 6em;
-    img {
-      position: absolute;
-      &:first-child {
-        left: 0%;
-        bottom: 0%;
+  .skillContainer {
+    width: 90%;
+    display: inline-block;
+    .textSkill {
+      width: 100%;
+      text-align: left;
+      position: relative;
+      h2 {
+        color: black;
+        font-size: 1.2em;
+        display: inline-block;
       }
-      &:nth-child(3) {
-        top: 0%;
+      p {
+        color: $grey;
+        display: inline-block;
+        position: absolute;;
         right: 0%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      @media (max-width: 400px) {
+        p {
+          font-size: 0.8em;
+        }
+        h2 {
+          font-size: 1em;
+        }
       }
     }
-    h1 {
-      font-size: 3em;
-      color: $grey;
-      padding: 0.5em 0px;
-    }
-  }
-  .textSkill {
-    width: 90%;
-    text-align: left;
-    position: relative;
-    h2 {
-      color: black;
-      font-size: 1.2em;
-      display: inline-block;
-    }
-    p {
-      color: $grey;
-      display: inline-block;
-      position: absolute;;
-      right: 0%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-  .bar {
-    width: 90%;
-    height: 25px;
-    background-color: $greytext;
-    opacity: 0.7;
-    margin-bottom: 2em;
-    div {
-      background-color: $purple;
-      width: 70%;
-      height: 100%;
+    .bar {
+      width: 100%;
+      height: 25px;
+      background-color: $greytext;
+      opacity: 0.7;
+      margin-bottom: 2em;
+      div {
+        background-color: $purple;
+        width: 70%;
+        height: 100%;
+      }
     }
   }
 }
@@ -327,10 +383,16 @@ header {
 
 .container-fluid > .row:nth-child(9) {
   text-align: center;
-  padding: 6em 0px;
+  padding: 3em 0px;
   background-color: $greyish;
   h3 {
     font-size: 4em;
+    margin-top: 0.5em;
+  }
+  @media (max-width: 400px) {
+    h3 {
+      font-size: 3em;
+    }
   }
   p {
     color: $grey;
@@ -437,6 +499,10 @@ header {
     resize: none;
     margin: 0.8em 0px;
     padding: 15px;
+    box-sizing: border-box;
+  }
+  input:first-child {
+    margin-top: 0px;
   }
   .cell {
     vertical-align: top;
@@ -470,27 +536,6 @@ header {
       }
     }
   }
-  .title {
-    position: relative;
-    margin-bottom: 6em;
-    display: inline-block;
-    img {
-      position: absolute;
-      &:first-child {
-        left: -10%;
-        bottom: 0%;
-      }
-      &:nth-child(3) {
-        top: 0%;
-        right: -10%;
-      }
-    }
-    h1 {
-      font-size: 2.5em;
-      padding: 0.5em 0px;
-      color: $grey;
-    }
-  }
   div:not(.row) {
     text-align: left;
     p {
@@ -505,7 +550,6 @@ header {
   &> div:last-child {
     text-align: left;
     button {
-      margin-left: auto;
       border: 0px;
       border-radius: 5px;
       width: 200px;
@@ -514,6 +558,32 @@ header {
       margin-left: 15px;
       background-color: $purple;
       color: white;
+    }
+  }
+  @media (max-width: 768px) {
+    .table {
+      display: inline-block !important;
+      .cell {
+        display: block !important;
+        input, textarea {
+          width: 100%;
+        }
+        h2 {
+          display: inline-block;
+        }
+        #circleHolder {
+          float: right;
+          display: inline-block;
+          .circle {
+            position: relative;
+            left: auto;
+            margin: 0em 1em;
+          }
+        }
+      }
+    }
+    &> div:last-child {
+      text-align: center;
     }
   }
 }

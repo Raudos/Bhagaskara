@@ -16,10 +16,30 @@ span {
   color: #9f269b; }
 
 .container-fluid > .row {
-  padding: 0px 15px; }
+  padding-left: 15px;
+  padding-right: 15px; }
 
 .table {
   width: 100%; }
+
+.title {
+  position: relative;
+  margin-bottom: 6em;
+  display: inline-block; }
+  .title img {
+    position: absolute; }
+    .title img:first-child {
+      left: -10%;
+      bottom: 0%; }
+    .title img:nth-child(3) {
+      top: 0%;
+      right: -10%; }
+  .title h1 {
+    color: #676767;
+    padding: 0.5em 0px; }
+  @media (max-width: 500px) {
+    .title h1 {
+      font-size: 3em; } }
 
 /* --------------------------------------------------------------------
                               First row
@@ -28,7 +48,8 @@ header {
   text-align: center;
   background-image: url("images/Header/base/background.png");
   background-position: center;
-  background-size: cover; }
+  background-size: cover;
+  padding: 6em 0px; }
   header #title {
     margin-bottom: 5em; }
   header .row .headerNav:first-child {
@@ -38,14 +59,18 @@ header {
     header .row .hexagon img:first-child {
       width: 85%; }
     header .row .hexagon img:nth-child(2) {
+      width: 25%;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); }
   header .row #scroller {
-    margin-bottom: 2em; }
-    header .row #scroller img {
-      width: auto; }
+    width: 10%;
+    display: inline-block; }
+    header .row #scroller img:first-child {
+      width: 100%; }
+    header .row #scroller img:nth-child(2) {
+      width: 60%; }
 
 /* --------------------------------------------------------------------
                               Second row
@@ -59,6 +84,15 @@ header {
     color: #676767;
     display: inline-block;
     padding: 1em 15px; }
+  @media (max-width: 600px) {
+    .container-fluid > .row:nth-child(2) p {
+      font-size: 0.7em; }
+    .container-fluid > .row:nth-child(2) h1 {
+      font-size: 1.5em;
+      margin: 0.5em 0px; } }
+  @media (max-width: 300px) {
+    .container-fluid > .row:nth-child(2) h1 {
+      margin: 1em 0px; } }
   .container-fluid > .row:nth-child(2) div:last-child {
     text-align: right;
     position: absolute;
@@ -80,11 +114,18 @@ header {
     font-size: 1.5em;
     line-height: 45px;
     padding: 15px; }
+  @media (max-width: 500px) {
+    .container-fluid > .row:nth-child(3) h2 {
+      font-size: 1.8em; }
+    .container-fluid > .row:nth-child(3) p {
+      font-size: 0.9em;
+      line-height: 30px; } }
   .container-fluid > .row:nth-child(3) .hexagon {
     position: relative; }
     .container-fluid > .row:nth-child(3) .hexagon img:first-child {
       width: 40%; }
     .container-fluid > .row:nth-child(3) .hexagon img:nth-child(2) {
+      width: 15%;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -129,8 +170,23 @@ header {
     color: #676767;
     font-size: 3em;
     padding: 0.5em 0px; }
-  .container-fluid > .row:nth-child(4) .row img {
+  .container-fluid > .row:nth-child(4) .row div:not(.title) img {
     width: 100%; }
+  @media (max-width: 992px) {
+    .container-fluid > .row:nth-child(4) .table {
+      display: inline-block !important; }
+      .container-fluid > .row:nth-child(4) .table .cell {
+        display: inline-block !important;
+        float: left !important;
+        padding: 15px 15px; }
+        .container-fluid > .row:nth-child(4) .table .cell p {
+          font-size: 1.1em;
+          line-height: 30px; }
+        .container-fluid > .row:nth-child(4) .table .cell button {
+          position: relative;
+          margin-top: 15px; }
+        .container-fluid > .row:nth-child(4) .table .cell:first-child {
+          text-align: center; } }
 
 /* --------------------------------------------------------------------
                               Fifth and Eigth row
@@ -143,7 +199,10 @@ header {
   padding: 6em 0px; }
   .container-fluid > .row:nth-child(5) .hexagon, .container-fluid > .row:nth-child(8) .hexagon {
     position: relative; }
+    .container-fluid > .row:nth-child(5) .hexagon img:nth-child(1), .container-fluid > .row:nth-child(8) .hexagon img:nth-child(1) {
+      width: 20%; }
     .container-fluid > .row:nth-child(5) .hexagon img:nth-child(2), .container-fluid > .row:nth-child(8) .hexagon img:nth-child(2) {
+      width: 6%;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -155,8 +214,8 @@ header {
 .container-fluid > .row:nth-child(6) {
   text-align: center;
   padding: 6em 0px; }
-  .container-fluid > .row:nth-child(6) #team, .container-fluid > .row:nth-child(6) #nav {
-    margin-right: 41.66667%; }
+  .container-fluid > .row:nth-child(6) .portrait {
+    width: 80%; }
   .container-fluid > .row:nth-child(6) #nav {
     margin-bottom: 6em; }
     .container-fluid > .row:nth-child(6) #nav div {
@@ -167,21 +226,6 @@ header {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%); }
-  .container-fluid > .row:nth-child(6) #team {
-    position: relative;
-    margin-bottom: 6em; }
-    .container-fluid > .row:nth-child(6) #team img {
-      position: absolute; }
-      .container-fluid > .row:nth-child(6) #team img:first-child {
-        left: 0%;
-        bottom: 0%; }
-      .container-fluid > .row:nth-child(6) #team img:nth-child(3) {
-        top: 0%;
-        right: 0%; }
-  .container-fluid > .row:nth-child(6) h1 {
-    font-size: 3em;
-    color: #676767;
-    padding: 0.5em 0px; }
   .container-fluid > .row:nth-child(6) h2, .container-fluid > .row:nth-child(6) p {
     color: #676767; }
   .container-fluid > .row:nth-child(6) .circle {
@@ -206,56 +250,53 @@ header {
 .container-fluid > .row:nth-child(7) {
   text-align: center;
   padding-bottom: 6em; }
-  .container-fluid > .row:nth-child(7) #skill {
-    position: relative;
-    margin-bottom: 6em; }
-    .container-fluid > .row:nth-child(7) #skill img {
-      position: absolute; }
-      .container-fluid > .row:nth-child(7) #skill img:first-child {
-        left: 0%;
-        bottom: 0%; }
-      .container-fluid > .row:nth-child(7) #skill img:nth-child(3) {
-        top: 0%;
-        right: 0%; }
-    .container-fluid > .row:nth-child(7) #skill h1 {
-      font-size: 3em;
-      color: #676767;
-      padding: 0.5em 0px; }
-  .container-fluid > .row:nth-child(7) .textSkill {
+  .container-fluid > .row:nth-child(7) .skillContainer {
     width: 90%;
-    text-align: left;
-    position: relative; }
-    .container-fluid > .row:nth-child(7) .textSkill h2 {
-      color: black;
-      font-size: 1.2em;
-      display: inline-block; }
-    .container-fluid > .row:nth-child(7) .textSkill p {
-      color: #676767;
-      display: inline-block;
-      position: absolute;
-      right: 0%;
-      top: 50%;
-      transform: translateY(-50%); }
-  .container-fluid > .row:nth-child(7) .bar {
-    width: 90%;
-    height: 25px;
-    background-color: #d1d5d7;
-    opacity: 0.7;
-    margin-bottom: 2em; }
-    .container-fluid > .row:nth-child(7) .bar div {
-      background-color: #9f269b;
-      width: 70%;
-      height: 100%; }
+    display: inline-block; }
+    .container-fluid > .row:nth-child(7) .skillContainer .textSkill {
+      width: 100%;
+      text-align: left;
+      position: relative; }
+      .container-fluid > .row:nth-child(7) .skillContainer .textSkill h2 {
+        color: black;
+        font-size: 1.2em;
+        display: inline-block; }
+      .container-fluid > .row:nth-child(7) .skillContainer .textSkill p {
+        color: #676767;
+        display: inline-block;
+        position: absolute;
+        right: 0%;
+        top: 50%;
+        transform: translateY(-50%); }
+      @media (max-width: 400px) {
+        .container-fluid > .row:nth-child(7) .skillContainer .textSkill p {
+          font-size: 0.8em; }
+        .container-fluid > .row:nth-child(7) .skillContainer .textSkill h2 {
+          font-size: 1em; } }
+    .container-fluid > .row:nth-child(7) .skillContainer .bar {
+      width: 100%;
+      height: 25px;
+      background-color: #d1d5d7;
+      opacity: 0.7;
+      margin-bottom: 2em; }
+      .container-fluid > .row:nth-child(7) .skillContainer .bar div {
+        background-color: #9f269b;
+        width: 70%;
+        height: 100%; }
 
 /* --------------------------------------------------------------------
                               Ninth row
 ---------------------------------------------------------------------*/
 .container-fluid > .row:nth-child(9) {
   text-align: center;
-  padding: 6em 0px;
+  padding: 3em 0px;
   background-color: #eeeeee; }
   .container-fluid > .row:nth-child(9) h3 {
-    font-size: 4em; }
+    font-size: 4em;
+    margin-top: 0.5em; }
+  @media (max-width: 400px) {
+    .container-fluid > .row:nth-child(9) h3 {
+      font-size: 3em; } }
   .container-fluid > .row:nth-child(9) p {
     color: #676767; }
   .container-fluid > .row:nth-child(9) .quote {
@@ -335,7 +376,10 @@ header {
     width: 90%;
     resize: none;
     margin: 0.8em 0px;
-    padding: 15px; }
+    padding: 15px;
+    box-sizing: border-box; }
+  .container-fluid > .row:nth-child(11) input:first-child {
+    margin-top: 0px; }
   .container-fluid > .row:nth-child(11) .cell {
     vertical-align: top;
     position: relative;
@@ -362,22 +406,6 @@ header {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%); }
-  .container-fluid > .row:nth-child(11) .title {
-    position: relative;
-    margin-bottom: 6em;
-    display: inline-block; }
-    .container-fluid > .row:nth-child(11) .title img {
-      position: absolute; }
-      .container-fluid > .row:nth-child(11) .title img:first-child {
-        left: -10%;
-        bottom: 0%; }
-      .container-fluid > .row:nth-child(11) .title img:nth-child(3) {
-        top: 0%;
-        right: -10%; }
-    .container-fluid > .row:nth-child(11) .title h1 {
-      font-size: 2.5em;
-      padding: 0.5em 0px;
-      color: #676767; }
   .container-fluid > .row:nth-child(11) div:not(.row) {
     text-align: left; }
     .container-fluid > .row:nth-child(11) div:not(.row) p {
@@ -389,7 +417,6 @@ header {
   .container-fluid > .row:nth-child(11) > div:last-child {
     text-align: left; }
     .container-fluid > .row:nth-child(11) > div:last-child button {
-      margin-left: auto;
       border: 0px;
       border-radius: 5px;
       width: 200px;
@@ -398,6 +425,24 @@ header {
       margin-left: 15px;
       background-color: #9f269b;
       color: white; }
+  @media (max-width: 768px) {
+    .container-fluid > .row:nth-child(11) .table {
+      display: inline-block !important; }
+      .container-fluid > .row:nth-child(11) .table .cell {
+        display: block !important; }
+        .container-fluid > .row:nth-child(11) .table .cell input, .container-fluid > .row:nth-child(11) .table .cell textarea {
+          width: 100%; }
+        .container-fluid > .row:nth-child(11) .table .cell h2 {
+          display: inline-block; }
+        .container-fluid > .row:nth-child(11) .table .cell #circleHolder {
+          float: right;
+          display: inline-block; }
+          .container-fluid > .row:nth-child(11) .table .cell #circleHolder .circle {
+            position: relative;
+            left: auto;
+            margin: 0em 1em; }
+    .container-fluid > .row:nth-child(11) > div:last-child {
+      text-align: center; } }
 
 /* --------------------------------------------------------------------
                               Footer
