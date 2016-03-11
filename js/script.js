@@ -12,6 +12,7 @@ function $showMePicked() {
     $selector = "[data-name=" + $attr + "]";
     $selectorSection = $selector + ":not(img)";
     $($selector).removeClass("invisible");
+    $("footer").removeClass("invisible");
     $(window).scrollTo($selectorSection, 2000);
   });
 }
