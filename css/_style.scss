@@ -15,9 +15,14 @@ p {
 span {
   color: $purple;
 }
+body {
+  background-color: $mainBackground;
+}
 .container-fluid > .row {
   padding-left: 15px;
   padding-right : 15px;
+  box-sizing: border-box;
+  background-color: white;
 }
 .table {
   width: 100%;
@@ -47,7 +52,12 @@ span {
     }
   }
 }
-
+.invisible {
+  display: none;
+}
+.visible {
+  display: block;
+}
 /* --------------------------------------------------------------------
                               First row
 ---------------------------------------------------------------------*/
@@ -56,6 +66,7 @@ header {
   background-image: url("images/Header/base/background.png");
   background-position: center;
   background-size: cover;
+  opacity: 0.9;
   padding: 6em 0px;
   #title {
     margin-bottom: 5em;
@@ -455,6 +466,10 @@ header {
     width: 80px;
     margin: 0px 5px;
     background-color: white;
+    &:hover {
+      background-color: $purple;
+      color: white;
+    }
   }
   #gallery {
     margin: 2em 0px;

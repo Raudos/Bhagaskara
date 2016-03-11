@@ -15,9 +15,14 @@ p {
 span {
   color: #9f269b; }
 
+body {
+  background-color: #39286e; }
+
 .container-fluid > .row {
   padding-left: 15px;
-  padding-right: 15px; }
+  padding-right: 15px;
+  box-sizing: border-box;
+  background-color: white; }
 
 .table {
   width: 100%; }
@@ -41,6 +46,12 @@ span {
     .title h1 {
       font-size: 3em; } }
 
+.invisible {
+  display: none; }
+
+.visible {
+  display: block; }
+
 /* --------------------------------------------------------------------
                               First row
 ---------------------------------------------------------------------*/
@@ -49,6 +60,7 @@ header {
   background-image: url("images/Header/base/background.png");
   background-position: center;
   background-size: cover;
+  opacity: 0.9;
   padding: 6em 0px; }
   header #title {
     margin-bottom: 5em; }
@@ -343,6 +355,9 @@ header {
     width: 80px;
     margin: 0px 5px;
     background-color: white; }
+    .container-fluid > .row:nth-child(10) button:hover {
+      background-color: #9f269b;
+      color: white; }
   .container-fluid > .row:nth-child(10) #gallery {
     margin: 2em 0px; }
     .container-fluid > .row:nth-child(10) #gallery button {
