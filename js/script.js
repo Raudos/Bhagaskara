@@ -4,9 +4,72 @@ var $hexThree = $(".container-fluid > .row:nth-child(3) .hexagon img");
 var $invisible = $(".invisible");
 var $scroller = $("#scroller");
 var $attr, $selector, $selectorSection;
+var $quoteNav = $(".quoteNav");
+var $quotes = $(".quote");
+var $active, $child, $visible, $quoteSelector;
+var $leftNav = $("#nav img:first-child");
+var $rightNav = $("#nav img:last-child");
+var $team = $(".person");
 //Functions
+function $showTeamSmall() {
+  $leftNav.on("click", function() {
+    $active = $(".person:not(.hidden-xs)");
+    $active.addClass("hidden-xs");
+    $active.prev(".person").removeClass("hidden-xs");
+    $active = $(".person:not(.hidden-xs)");
+    if ($active.length == 0) {
+      $(".person:last-child").removeClass("hidden-xs");
+    }
+  });
+  $rightNav.on("click", function() {
+    $active = $(".person:not(.hidden-xs)");
+    $active.addClass("hidden-xs");
+    $active.next(".person").removeClass("hidden-xs");
+    $active = $(".person:not(.hidden-xs)");
+    if ($active.length == 0) {
+      $(".person:first-child").removeClass("hidden-xs");
+    }
+  });
+};
+function $showTeamBig() {
+  $leftNav.on("click", function() {
+    $active = $(".teamActive");
+    $active.removeClass("teamActive");
+    $active.prev(".person").addClass("teamActive");
+    $active = $(".teamActive");
+    if ($active.length == 2) {
+      $(".person:last-child").addClass("teamActive");
+    }
+  });
+  $rightNav.on("click", function() {
+    $active = $(".teamActive");
+    $active.removeClass("teamActive");
+    $active.next(".person").addClass("teamActive");
+    $active = $(".teamActive");
+    if ($active.length == 2) {
+      $(".person:first-child").addClass("teamActive");
+    }
+  });
+};
+function $nextQuote() {
+  /* Add class .visible to the corresponding .quote after .quoteNav is clicked */
+  $quoteNav.on("click", function() {
+    $active = $(".active");
+    $visible = $(".visible");
+    $active.removeClass("active");
+    $(this).addClass("active");
+    for (var i = 1; $quotes.length >= i; i++) {
+      $child = ":nth-child(" + i + ")";
+      if ($(this).is($child)) {
+        $quoteSelector = ".quote" + $child;
+        $visible.removeClass("visible");
+        $($quoteSelector).addClass("visible");
+      }
+    }
+  })
+};
 function $showMePicked() {
-  /* Show subsections coresponding to the clicked image */
+  /* Show subsections corresponding to the clicked image */
   $hex.on("click", function() {
     $attr = $(this).attr("data-name");
     $selector = "[data-name=" + $attr + "]";
@@ -15,7 +78,7 @@ function $showMePicked() {
     $("footer").removeClass("invisible");
     $(window).scrollTo($selectorSection, 2000);
   });
-}
+};
 function $showMeAll() {
   /* Show all previously hidden subsections, move to first one */
   $scroller.on("click", function() {
@@ -72,4 +135,18 @@ $(document).on("ready", function() {
   $hexHover();
   $showMeAll();
   $showMePicked();
+  $nextQuote();
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    $showTeamSmall();
+  } else {
+    $showTeamBig();
+  }
+  /*
+  $(window).resize(function() {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      $showTeamSmall();
+    } else {
+      $showTeamBig();
+    }
+  });*/
 })

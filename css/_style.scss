@@ -53,10 +53,18 @@ body {
   }
 }
 .invisible {
-  display: none;
+
 }
 .visible {
-  display: block;
+  display: block !important;
+}
+.circle {
+  &:hover {
+    background-color: $purple;
+    p {
+      color: white !important;
+    }
+  }
 }
 /* --------------------------------------------------------------------
                               First row
@@ -297,8 +305,22 @@ header {
 .container-fluid > .row:nth-child(6) {
   text-align: center;
   padding: 6em 0px;
-  .portrait {
-    width: 80%;
+  .person {
+    display: none;
+    .portrait {
+      width: 80%;
+    }
+  }
+  .teamActive {
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .person {
+      display: block;
+    }
+    .hidden-xs {
+      display: none;
+    }
   }
   #nav {
     margin-bottom: 6em;
@@ -394,7 +416,7 @@ header {
 
 .container-fluid > .row:nth-child(9) {
   text-align: center;
-  padding: 3em 0px;
+  padding: 6em 0px;
   background-color: $greyish;
   h3 {
     font-size: 4em;
@@ -409,7 +431,8 @@ header {
     color: $grey;
   }
   .quote {
-    padding: 6em 0px;
+    display: none;
+    margin-top: 3em;
     .iAmAPhoto {
       width: 100px;
       height: 100px;
@@ -429,6 +452,19 @@ header {
         padding: 15px;
       }
     }
+  }
+  .quoteNav {
+    height: 15px;
+    width: 15px;
+    border: 1px solid $grey;
+    display: inline-block;
+    border-radius: 50%;
+    &:hover {
+      background-color: $grey;
+    }
+  }
+  .active {
+    background-color: $grey;
   }
 }
 
