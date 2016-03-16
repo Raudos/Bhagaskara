@@ -76,8 +76,14 @@ header {
   background-size: cover;
   opacity: 0.9;
   padding: 6em 0px;
+  @media (max-width: 800px) {
+    padding: 3em 0px;
+  }
   #title {
     margin-bottom: 5em;
+  }
+  h1, h2, p {
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
   }
   .row {
     .headerNav:first-child {
@@ -127,6 +133,44 @@ header {
     color: $grey;
     display: inline-block;
     padding: 1em 15px;
+    &:hover {
+      color: $purple;
+    }
+  }
+  div:last-child {
+    text-align: right;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+  }
+  #burger {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+  }
+  @media (max-width: 768px) {
+    #burger {
+      display: inline-block;
+      width: 8%;
+    }
+    #menu {
+      display: none;
+      top: 10%;
+      right: 15%;
+      transform: translateY(-0%);
+      border: 1px solid $purple;
+      background-color: white;
+      z-index: 1000;
+      border-radius: 10px;
+      width: 20%;
+      p {
+        display: block;
+        padding: 1em 5px;
+      }
+    }
   }
   @media (max-width: 600px) {
     p {
@@ -142,13 +186,6 @@ header {
       margin: 1em 0px;
     }
   }
-  div:last-child {
-    text-align: right;
-    position: absolute;
-    top: 50%;
-    right: 0%;
-    transform: translateY(-50%);
-  }
 }
 
 /* --------------------------------------------------------------------
@@ -159,6 +196,9 @@ header {
   text-align: center;
   background-color: $greyish;
   padding: 9em 0px;
+  @media (max-width: 800px) {
+    padding: 4.5em 0px;
+  }
   h2 {
     color: $grey;
   }
@@ -216,6 +256,9 @@ header {
   }
   text-align: center;
   padding: 6em 0px;
+  @media (max-width: 800px) {
+    padding: 3em 0px;
+  }
   .cell {
     vertical-align: top;
     text-align: left;
@@ -281,6 +324,9 @@ header {
   background-position: center;
   background-size: cover;
   padding: 6em 0px;
+  @media (max-width: 800px) {
+    padding: 3em 0px;
+  }
   .hexagon {
     position: relative;
     img {
@@ -305,6 +351,9 @@ header {
 .container-fluid > .row:nth-child(6) {
   text-align: center;
   padding: 6em 0px;
+  @media (max-width: 800px) {
+    padding: 3em 0px;
+  }
   .person {
     display: none;
     .portrait {
@@ -366,6 +415,9 @@ header {
 .container-fluid > .row:nth-child(7) {
   text-align: center;
   padding-bottom: 6em;
+  @media (max-width: 800px) {
+    padding-bottom: 3em;
+  }
   .skillContainer {
     width: 90%;
     display: inline-block;
@@ -418,6 +470,9 @@ header {
   text-align: center;
   padding: 6em 0px;
   background-color: $greyish;
+  @media (max-width: 800px) {
+    padding: 3em 0px;
+  }
   h3 {
     font-size: 4em;
     margin-top: 0.5em;
@@ -476,6 +531,9 @@ header {
 .container-fluid > .row:nth-child(10) {
   text-align: center;
   padding: 6em 0px;
+  @media (max-width: 800px) {
+    padding: 3em 0px;
+  }
   #portfolio {
     position: relative;
     margin-bottom: 6em;
@@ -545,6 +603,9 @@ header {
 .container-fluid > .row:nth-child(11) {
   text-align: center;
   padding: 4em 0px;
+  @media (max-width: 800px) {
+    padding: 2em 0px;
+  }
   input, textarea {
     width: 90%;
     resize: none;
@@ -646,6 +707,9 @@ header {
 .container-fluid > .row:nth-child(12) {
   text-align: center;
   padding: 2em 0px;
+  @media (max-width: 800px) {
+    padding: 1em 0px;
+  }
   h1 {
     color: $grey;
   }

@@ -10,7 +10,36 @@ var $active, $child, $visible, $quoteSelector;
 var $leftNav = $("#nav img:first-child");
 var $rightNav = $("#nav img:last-child");
 var $team = $(".person");
+var $burger = $("#burger");
+var $menu = $("#menu");
+var $checker = 0;
 //Functions
+function $showMenu() {
+  $burger.on("click", function() {
+    $menu.toggle();
+    //if control variable is 0 change to 1, otherwise leave 0
+    if ($checker == 0) {
+      $checker = 1;
+    } else {
+      $checker = 0;
+    }
+  });
+}
+function $swapHamburger() {
+  $burger.on("mouseover", function() {
+    //if control variable is not 0 it means that menu is triggered, no need for color swap
+    if ($checker == 0) {
+      var src = $(this).attr("src").match(/[^\.]+/) + "Purple.png";
+      $(this).attr("src", src);
+    }
+  });
+  $burger.on("mouseout", function() {
+    if ($checker == 0) {
+      var src = $(this).attr("src").replace("Purple.png", ".png");
+      $(this).attr("src", src);
+    }
+  });
+}
 function $showTeamSmall() {
   $leftNav.on("click", function() {
     $active = $(".person:not(.hidden-xs)");
@@ -141,6 +170,8 @@ $(document).on("ready", function() {
   } else {
     $showTeamBig();
   }
+  $swapHamburger();
+  $showMenu();
   /*
   $(window).resize(function() {
     if (window.matchMedia('(max-width: 768px)').matches) {
