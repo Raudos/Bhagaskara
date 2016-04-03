@@ -53,7 +53,7 @@ body {
   }
 }
 .invisible {
-  display: none;
+  //display: none;
 }
 .visible {
   display: block !important;
@@ -351,23 +351,6 @@ header {
   @media (max-width: 800px) {
     padding: 3em 0px;
   }
-  .person {
-    display: none;
-    .portrait {
-      width: 80%;
-    }
-  }
-  .teamActive {
-    display: block;
-  }
-  @media (max-width: 768px) {
-    .person {
-      display: block;
-    }
-    .hidden-xs {
-      display: none;
-    }
-  }
   #nav {
     margin-bottom: 6em;
     div {
@@ -380,6 +363,53 @@ header {
           left: 50%;
           transform: translate(-50%, -50%);
         }
+      }
+    }
+  }
+  &>.row:nth-child(3) {
+    overflow: hidden;
+    position: relative;
+    .person {
+      display: inline-block;
+      position: absolute;
+
+      &:nth-child(1) {
+        left: 0%
+      }
+      &:nth-child(2) {
+        left: 33.333%;
+      }
+      &:nth-child(3) {
+        left: 66.666%;
+      }
+      &:nth-child(4) {
+        left: 100%;
+      }
+      &:nth-child(5) {
+        left: 133.333%;
+      }
+      .portrait {
+        width: 80%;
+        border-radius: 50%;
+      }
+    }
+    .teamActive {
+      position: relative;
+      img {
+        border: 5px solid $purple;
+      }
+    }
+    @media (max-width: 768px) {
+      .person {
+        display: block;
+        left: 0% !important;
+        position: relative;
+        img {
+          border: 5px solid $purple;
+        }
+      }
+      .hidden-xs {
+        display: none;
       }
     }
   }
@@ -561,6 +591,10 @@ header {
       background-color: $purple;
       color: white;
     }
+  }
+  .clicked {
+    background-color: $purple;
+    color: white;
   }
   #gallery {
     margin: 2em 0px;

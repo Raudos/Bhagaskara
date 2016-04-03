@@ -44,9 +44,6 @@ body {
     .title h1 {
       font-size: 3em; } }
 
-.invisible {
-  display: none; }
-
 .visible {
   display: block !important; }
 
@@ -268,17 +265,6 @@ header {
   @media (max-width: 800px) {
     .container-fluid > .row:nth-child(6) {
       padding: 3em 0px; } }
-  .container-fluid > .row:nth-child(6) .person {
-    display: none; }
-    .container-fluid > .row:nth-child(6) .person .portrait {
-      width: 80%; }
-  .container-fluid > .row:nth-child(6) .teamActive {
-    display: block; }
-  @media (max-width: 768px) {
-    .container-fluid > .row:nth-child(6) .person {
-      display: block; }
-    .container-fluid > .row:nth-child(6) .hidden-xs {
-      display: none; } }
   .container-fluid > .row:nth-child(6) #nav {
     margin-bottom: 6em; }
     .container-fluid > .row:nth-child(6) #nav div {
@@ -289,6 +275,38 @@ header {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%); }
+  .container-fluid > .row:nth-child(6) > .row:nth-child(3) {
+    overflow: hidden;
+    position: relative; }
+    .container-fluid > .row:nth-child(6) > .row:nth-child(3) .person {
+      display: inline-block;
+      position: absolute; }
+      .container-fluid > .row:nth-child(6) > .row:nth-child(3) .person:nth-child(1) {
+        left: 0%; }
+      .container-fluid > .row:nth-child(6) > .row:nth-child(3) .person:nth-child(2) {
+        left: 33.333%; }
+      .container-fluid > .row:nth-child(6) > .row:nth-child(3) .person:nth-child(3) {
+        left: 66.666%; }
+      .container-fluid > .row:nth-child(6) > .row:nth-child(3) .person:nth-child(4) {
+        left: 100%; }
+      .container-fluid > .row:nth-child(6) > .row:nth-child(3) .person:nth-child(5) {
+        left: 133.333%; }
+      .container-fluid > .row:nth-child(6) > .row:nth-child(3) .person .portrait {
+        width: 80%;
+        border-radius: 50%; }
+    .container-fluid > .row:nth-child(6) > .row:nth-child(3) .teamActive {
+      position: relative; }
+      .container-fluid > .row:nth-child(6) > .row:nth-child(3) .teamActive img {
+        border: 5px solid #9f269b; }
+    @media (max-width: 768px) {
+      .container-fluid > .row:nth-child(6) > .row:nth-child(3) .person {
+        display: block;
+        left: 0% !important;
+        position: relative; }
+        .container-fluid > .row:nth-child(6) > .row:nth-child(3) .person img {
+          border: 5px solid #9f269b; }
+      .container-fluid > .row:nth-child(6) > .row:nth-child(3) .hidden-xs {
+        display: none; } }
   .container-fluid > .row:nth-child(6) h2, .container-fluid > .row:nth-child(6) p {
     color: #676767; }
   .container-fluid > .row:nth-child(6) .circle {
@@ -429,6 +447,9 @@ header {
     .container-fluid > .row:nth-child(10) button:hover {
       background-color: #9f269b;
       color: white; }
+  .container-fluid > .row:nth-child(10) .clicked {
+    background-color: #9f269b;
+    color: white; }
   .container-fluid > .row:nth-child(10) #gallery {
     margin: 2em 0px; }
     .container-fluid > .row:nth-child(10) #gallery button {

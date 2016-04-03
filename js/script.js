@@ -9,6 +9,7 @@ var $quotes = $(".quote");
 var $active, $child, $visible, $quoteSelector;
 var $leftNav = $("#nav img:first-child");
 var $rightNav = $("#nav img:last-child");
+var $staffRow = $(".container-fluid > .row:nth-child(6) > .row:nth-child(3)");
 var $team = $(".person");
 var $burger = $("#burger");
 var $menu = $("#menu");
@@ -16,6 +17,9 @@ var $checker = 0;
 var $containerRows = $(".container-fluid > .row");
 var $firstRow = $(".container-fluid > .row:first-child")
 var $width, $height;
+var $portfolioArray, $apps, $web, $icons, $mainDiv, $imgContainer;
+
+
 //Functions
 function $paddingMe() {
   $width = $(window).width();
@@ -67,6 +71,39 @@ function $swapHamburger() {
     }
   });
 }
+function $createPortfolioArray() {
+  $.getJSON("js/portfolio.json", function(data) {
+    $portfolioArray = data;
+  });
+  $(document).ajaxComplete(function() {
+    $createPortfolio();
+  });
+}
+function $createPortfolio() {
+  $mainDiv = "<div class=\"col-xs-12 col-sm-6 col-md-4 hidden-xs\"><div class=\"imageContainer\"></div></div>";
+  $("[name=portfolio]").on("click", function() {
+    if ($(this).text().toString() == "ALL") {
+      $("[name=portfolio]").addClass("clicked");
+    } else {
+      $(this).toggleClass("clicked");
+    }
+    for (var i = $portfolioArray.length - 1; i >= 0 ; i--) {
+      if ($portfolioArray[i].category.includes($(this).text().toString()) && $(this).hasClass("clicked")) {
+        $("#gallery").prepend($mainDiv);
+        $("#gallery div:first-child:not(.imageContainer)").addClass($portfolioArray[i].category);
+        $("#gallery div:first-child .imageContainer").prepend("<img src=" + $portfolioArray[i].img + "><h2>" + $portfolioArray[i].title
+        + "</h2><p>" + $portfolioArray[i].category + "</p>");
+      } else if (!$(this).hasClass("clicked")) {
+        var toDelete = "[class~=" + $(this).text().toString() + "]";
+        console.log(toDelete);
+        $(toDelete).remove();
+      }
+    }
+  })
+}
+function $addPortfolio() {
+
+}
 function $showTeamSmall() {
   $leftNav.on("click", function() {
     $active = $(".person:not(.hidden-xs)");
@@ -87,23 +124,28 @@ function $showTeamSmall() {
     }
   });
 };
+
 function $showTeamBig() {
   $leftNav.on("click", function() {
     $active = $(".teamActive");
-    $active.removeClass("teamActive");
-    $active.prev(".person").addClass("teamActive");
-    $active = $(".teamActive");
-    if ($active.length == 2) {
-      $(".person:last-child").addClass("teamActive");
+    if ($active.prev().length != 0) {
+      $active.removeClass("teamActive");
+      $active.prev(".person").addClass("teamActive");
+      $active = $(".teamActive");
+      $team.animate({
+        left: "+=33.333%",
+      }, 1500);
     }
   });
   $rightNav.on("click", function() {
     $active = $(".teamActive");
-    $active.removeClass("teamActive");
-    $active.next(".person").addClass("teamActive");
-    $active = $(".teamActive");
-    if ($active.length == 2) {
-      $(".person:first-child").addClass("teamActive");
+    if ($active.next().length != 0) {
+      $active.removeClass("teamActive");
+      $active.next(".person").addClass("teamActive");
+      $active = $(".teamActive");
+      $team.animate({
+        left: "-=33.333%",
+      }, 1500);
     }
   });
 };
@@ -203,6 +245,7 @@ $(document).on("ready", function() {
   }
   $swapHamburger();
   $showMenu();
+  $createPortfolioArray();
   /*
   $(window).resize(function() {
     if (window.matchMedia('(max-width: 768px)').matches) {
