@@ -17,9 +17,9 @@ var $checker = 0;
 var $containerRows = $(".container-fluid > .row");
 var $firstRow = $(".container-fluid > .row:first-child")
 var $width, $height;
-var $portfolioArray, $apps, $web, $icons, $mainDiv, $imgContainer;
-var $jsonClasses = "";
-var $temp = 0;
+var $portfolioArray, $mainDiv, $detached, $temp;
+var $detachedArray = new Array;
+
 
 
 //Functions
@@ -94,46 +94,64 @@ function $createPortfolio() {
     $("#gallery div:first-child .imageContainer").prepend("<img src=" + $portfolioArray[i].img + "><h2>" + $portfolioArray[i].title
     + "</h2><p>" + $portfolioArray[i].category.join(", ") + "</p>");
   }
+  //detach all the images, save them into array
+  $detached = $("#gallery div:not(.imageContainer)").detach();
+  for (var n = 0; n < $detached.length; n++) {
+    $detachedArray.push($detached[n]);
+  }
   $("[name=portfolio]").on("click", function() {
+    //if button is ALL
     if ($(this).text() == "ALL") {
-      if ($("[name=portfolio]:first-child").hasClass("clicked")) {
+      if ($(this).hasClass("clicked")) {
+        //if button has class .clicked detach all the images, save them into array
+        $detached = $("#gallery div:not(.imageContainer)").detach();
+        for (var n = 0; n < $detached.length; n++) {
+          $detachedArray.push($detached[n]);
+        }
+        //remove class
         $("[name=portfolio]").removeClass("clicked");
       } else {
         $("[name=portfolio]").addClass("clicked");
+        //if button wasnt .clicked prepend all elements
+        for (var m = 0; m < $detachedArray.length; m++) {
+          $("#gallery").prepend($detachedArray.splice(m, 1));
+          m--;
+        }
       }
-      //if all is clicked toggle all elements
-      $("#gallery div:not(.imageContainer)").toggle();
     } else {
-      if ($(this).hasClass("clicked")) {
-        $("[name=portfolio]:first-child").removeClass("clicked");
-      } else if ($(".clicked").length == 2) {
-        //if more than 2 elements have class .clicked we also add it to the ALL button
-        $("[name=portfolio]:first-child").addClass("clicked");
-      }
       //start building selector here
       temp = "." + $(this).text();
       //if this is clicked we want to know which elements to remove...
       if ($(this).hasClass("clicked")) {
+        $("[name=portfolio]:first-child").removeClass("clicked");
         for (var l = 0; $(".clicked").length > l; l++) {
-          // or which elements do not remove
+          //or which elements do not remove
           if ($(this).text() != $(".clicked")[l].innerText) {
             temp += ":not(." + $(".clicked")[l].innerText + ")";
           }
         }
-        //hide elements with created selector
-        $(temp).hide();
+        //detach elements with created selector
+        $detached = $(temp).detach();
+        for (var n = 0; n < $detached.length; n++) {
+          $detachedArray.push($detached[n]);
+        }
       } else {
-        //if button is not .clicked we show all elements with this tag
-        $(temp).show();
+        //if button is not .clicked we add all elements with this tag
+        for (var m = 0; m < $detachedArray.length; m++) {
+          if ($detachedArray[m].className.indexOf($(this).text()) > -1) {
+            $("#gallery").prepend($detachedArray.splice(m, 1));
+            m--;
+          }
+        }
+        if ($(".clicked").length == 2) {
+          $("[name=portfolio]:first-child").addClass("clicked");
+        }
       }
       $(this).toggleClass("clicked");
     }
   });
 }
 
-function $arrayClasses() {
-
-}
 function $showTeamSmall() {
   $leftNav.on("click", function() {
     $active = $(".person:not(.hidden-xs)");
