@@ -462,7 +462,8 @@ header {
     .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) {
       overflow: hidden;
       height: 400px;
-      padding: 10px; }
+      padding: 10px;
+      display: none; }
       .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) .imageContainer {
         height: 80%; }
         .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) .imageContainer img {
