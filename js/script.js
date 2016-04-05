@@ -19,6 +19,8 @@ var $firstRow = $(".container-fluid > .row:first-child")
 var $width, $height;
 var $portfolioArray, $mainDiv, $detached, $temp;
 var $detachedArray = new Array;
+var $headerHeight;
+
 
 
 
@@ -44,6 +46,19 @@ function $paddingMe() {
     $firstRow.css("padding-top", "6em");
     $firstRow.css("padding-bottom", "6em");
   }
+}
+
+function $fixMenu() {
+  $(document).scroll(function() {
+    $headerHeight = parseInt($('header').height(), 10) + parseInt($('header').css("padding-top"), 10) + parseInt($('header').css("padding-bottom"), 10);
+    if ($(document).scrollTop() >= $headerHeight) {
+      $(".container-fluid>.row:nth-child(2)").addClass("fixedMenu");
+      $("header").css("margin-bottom", $(".container-fluid>.row:nth-child(2)").height());
+    } else {
+      $(".container-fluid>.row:nth-child(2)").removeClass("fixedMenu");
+      $("header").css("margin-bottom", "0px");
+    }
+  })
 }
 function $showMenu() {
   $burger.on("click", function() {
@@ -82,7 +97,7 @@ function $createPortfolioArray() {
   });
 }
 function $createPortfolio() {
-  $mainDiv = "<div class=\"col-xs-12 col-sm-6 col-md-4 hidden-xs\"><div class=\"imageContainer\"></div></div>";
+  $mainDiv = "<div class=\"col-xs-6 col-sm-6 col-md-4\"><div class=\"imageContainer\"></div></div>";
   for (var i = $portfolioArray.length - 1; i >= 1 ; i--) {
     //add container for image, title and text
     $("#gallery").prepend($mainDiv);
@@ -149,26 +164,66 @@ function $createPortfolio() {
       }
       $(this).toggleClass("clicked");
     }
+    if ($(".clicked").length >= 1) {
+      $("#gallery button").show();
+    } else {
+      $("#gallery button").hide();
+    }
   });
 }
-
+function $replaceTeamArrows() {
+  $leftNav.on("mouseover", function() {
+    var src = $(this).attr("src").match(/[^\.]+/) + "purple.png";
+    $(this).attr("src", src);
+  });
+  $leftNav.on("mouseout", function() {
+    var src = $(this).attr("src").replace("purple.png", ".png");
+    $(this).attr("src", src);
+  });
+  $rightNav.on("mouseover", function() {
+    var src = $(this).attr("src").match(/[^\.]+/) + "purple.png";
+    $(this).attr("src", src);
+  });
+  $rightNav.on("mouseout", function() {
+    var src = $(this).attr("src").replace("purple.png", ".png");
+    $(this).attr("src", src);
+  });
+}
 function $showTeamSmall() {
   $leftNav.on("click", function() {
-    $active = $(".person:not(.hidden-xs)");
-    $active.addClass("hidden-xs");
-    $active.prev(".person").removeClass("hidden-xs");
-    $active = $(".person:not(.hidden-xs)");
-    if ($active.length == 0) {
-      $(".person:last-child").removeClass("hidden-xs");
+    $(this).css("pointer-events", "none");
+    $active = $(".teamActive");
+    if ($active.prev().length != 0) {
+      $(this).next().show(1000);
+      $active.removeClass("teamActive");
+      $active.prev(".person").addClass("teamActive");
+      $active = $(".teamActive");
+      $team.animate({
+        left: "+=100%",
+      }, 1500, function() {
+        $leftNav.css("pointer-events", "auto");
+      });
+      if ($active.prev().length == 0){
+        $(this).hide(1000);
+      }
     }
   });
   $rightNav.on("click", function() {
-    $active = $(".person:not(.hidden-xs)");
-    $active.addClass("hidden-xs");
-    $active.next(".person").removeClass("hidden-xs");
-    $active = $(".person:not(.hidden-xs)");
-    if ($active.length == 0) {
-      $(".person:first-child").removeClass("hidden-xs");
+    $active = $(".teamActive");
+    if ($active.next().length != 0) {
+      $(this).css("pointer-events", "none");
+      $(this).prev().show(1000);
+      $active.removeClass("teamActive");
+      $active.next(".person").addClass("teamActive");
+      $active = $(".teamActive");
+      $team.animate({
+        left: "-=100%",
+      }, 1500, function() {
+        $rightNav.css("pointer-events", "auto");
+      });
+      if ($active.next().length == 0){
+        $(this).hide(1000);
+      }
     }
   });
 };
@@ -177,23 +232,37 @@ function $showTeamBig() {
   $leftNav.on("click", function() {
     $active = $(".teamActive");
     if ($active.prev().length != 0) {
+      $(this).css("pointer-events", "none");
+      $(this).next().show(1000);
       $active.removeClass("teamActive");
       $active.prev(".person").addClass("teamActive");
       $active = $(".teamActive");
       $team.animate({
         left: "+=33.333%",
-      }, 1500);
+      }, 1500, function() {
+        $leftNav.css("pointer-events", "auto");
+      });
+      if ($active.prev().length == 0){
+        $(this).hide(1000);
+      }
     }
   });
   $rightNav.on("click", function() {
     $active = $(".teamActive");
     if ($active.next().length != 0) {
+      $(this).css("pointer-events", "none");
+      $(this).prev().show(1000);
       $active.removeClass("teamActive");
       $active.next(".person").addClass("teamActive");
       $active = $(".teamActive");
       $team.animate({
         left: "-=33.333%",
-      }, 1500);
+      }, 1500, function() {
+        $rightNav.css("pointer-events", "auto");
+      });
+      if ($active.next().length == 0){
+        $(this).hide(1000);
+      }
     }
   });
 };
@@ -219,11 +288,27 @@ function $showMePicked() {
   $hex.on("click", function() {
     $attr = $(this).attr("data-name");
     $selector = "[data-name=" + $attr + "]";
-    $selectorSection = $selector + ":not(img)";
-    $($selector).removeClass("invisible");
-    $("footer").removeClass("invisible");
-    $(window).scrollTo($selectorSection, 2000);
+    $selectorSection = $selector + ":not(img):not(p)";
+    $invisible.removeClass("invisible");
+    $(window).scrollTo($selectorSection, {offset: -100, duration: 2000});
   });
+  $hex.next().on("click", function() {
+    $attr = $(this).prev().attr("data-name");
+    $selector = "[data-name=" + $attr + "]";
+    $selectorSection = $selector + ":not(img):not(p)";
+    $invisible.removeClass("invisible");
+    $(window).scrollTo($selectorSection, {offset: -100, duration: 2000});
+  });
+  $menu.children().on("click", function() {
+    $attr = $(this).attr("data-name");
+    $selector = "[data-name=" + $attr + "]";
+    $selectorSection = $selector + ":not(img):not(p)";
+    if ($selectorSection == "[data-name=home]:not(img):not(p)") {
+      $(window).scrollTo($("header h1"), {offset: 50, duration: 2000});
+    } else {
+      $(window).scrollTo($selectorSection, {offset: -100, duration: 2000});
+    }
+  })
 };
 function $showMeAll() {
   /* Show all previously hidden subsections, move to first one */
@@ -232,6 +317,7 @@ function $showMeAll() {
     $(window).scrollTo(".container-fluid > .row:nth-child(2)", 2000);
   });
 }
+
 function $hexHover() {
   /* This whole function relies on the structure of .hexagon class div, which looks like this:
   <img(hexagonal shape), img(icon)>. Both images are siblings, which is why i used .prev() and .next() to target them.
@@ -239,18 +325,22 @@ function $hexHover() {
   $hex.on("mouseover", function() {
     var src = $(this).attr("src").match(/[^\.]+/) + "Purple.png";
     $(this).attr("src", src);
+    $(this).next().next().show();
   });
   $hex.on("mouseout", function() {
     var src = $(this).attr("src").replace("Purple.png", ".png");
     $(this).attr("src", src);
+    $(this).next().next().hide();
   });
   $hex.next().on("mouseover", function() {
     var src = $(this).prev().attr("src").match(/[^\.]+/) + "Purple.png";
     $(this).prev().attr("src", src);
+    $(this).next().show();
   });
   $hex.next().on("mouseout", function() {
     var src = $(this).prev().attr("src").replace("Purple.png", ".png");
     $(this).prev().attr("src", src);
+    $(this).next().hide();
   });
   $hexThree.on("mouseover", function() {
     var src = $(this).attr("src").match(/[^\.]+/) + "Purple.png";
@@ -286,11 +376,13 @@ $(document).on("ready", function() {
   $showMeAll();
   $showMePicked();
   $nextQuote();
+  $replaceTeamArrows();
   if (window.matchMedia('(max-width: 768px)').matches) {
     $showTeamSmall();
   } else {
     $showTeamBig();
   }
+  $fixMenu();
   $swapHamburger();
   $showMenu();
   $createPortfolioArray();

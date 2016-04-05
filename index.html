@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="container-fluid">
-      <header class="row">
+      <header class="row" data-name="home">
         <div id="title" class="col-md-10 col-md-offset-1">
           <h1>Bhagas<span>kara</span>.</h1>
           <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
@@ -24,10 +24,22 @@
               <div class="col-xs-3 col-sm-3 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-0 hexagon">
                 <img data-name="bubble" src="css/images/Header/header-nav/1/Shape.png" alt="hexagon" />
                 <img data-name="bubble" src="css/images/Header/header-nav/3/bubble.png" alt="chat-bubble" />
+                <div class="tooltip">
+                  <p>
+                    Blog
+                  </p>
+                  <img data-name="bubble" src="css/images/Header/header-nav/1/ShapePurple.png" alt="hexagon" />
+                </div>
               </div>
               <div class="col-xs-3 col-sm-3 col-md-6 hexagon">
                 <img data-name="photo" src="css/images/Header/header-nav/1/Shape.png" alt="hexagon" />
                 <img data-name="photo" src="css/images/Header/header-nav/4/photo.png" alt="photo" />
+                <div class="tooltip">
+                  <p>
+                    Portfolio
+                  </p>
+                  <img data-name="bubble" src="css/images/Header/header-nav/1/ShapePurple.png" alt="hexagon" />
+                </div>
               </div>
             </div>
           </div>
@@ -36,10 +48,22 @@
               <div class="col-xs-6 col-sm-6 col-md-6 hexagon">
                 <img data-name="settings" src="css/images/Header/header-nav/1/Shape.png" alt="hexagon" />
                 <img data-name="settings" src="css/images/Header/header-nav/1/settings.png" alt="settings" />
+                <div class="tooltip">
+                  <p>
+                    About
+                  </p>
+                  <img data-name="bubble" src="css/images/Header/header-nav/1/ShapePurple.png" alt="hexagon" />
+                </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6 hexagon">
                 <img data-name="user" src="css/images/Header/header-nav/1/Shape.png" alt="hexagon" />
                 <img data-name="user" src="css/images/Header/header-nav/2/user.png" alt="user" />
+                <div id="team" class="tooltip">
+                  <p>
+                    Team
+                  </p>
+                  <img data-name="bubble" src="css/images/Header/header-nav/1/ShapePurple.png" alt="hexagon" />
+                </div>
               </div>
             </div>
           </div>
@@ -48,15 +72,27 @@
               <div class="col-xs-6 col-sm-6 col-md-6 hexagon">
                 <img data-name="pen" src="css/images/Header/header-nav/1/Shape.png" alt="hexagon" />
                 <img data-name="pen" src="css/images/Header/header-nav/5/pen.png" alt="pen" />
+                <div id="services" class="tooltip">
+                  <p>
+                    Services
+                  </p>
+                  <img data-name="bubble" src="css/images/Header/header-nav/1/ShapePurple.png" alt="hexagon" />
+                </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-6 hexagon">
                 <img data-name="plane" src="css/images/Header/header-nav/1/Shape.png" alt="hexagon" />
                 <img data-name="plane" src="css/images/Header/header-nav/6/paperplane.png" alt="paper-plane" />
+                <div class="tooltip">
+                  <p>
+                    Contact
+                  </p>
+                  <img data-name="bubble" src="css/images/Header/header-nav/1/ShapePurple.png" alt="hexagon" />
+                </div>
               </div>
             </div>
           </div>
           <div id="scroller" class="hexagon">
-            <img src="css/images/Header/scroller/Shape.png" alt="hexagon" />
+            <img src="css/images/Header/header-nav/1/Shape.png" alt="hexagon" />
             <img src="css/images/Header/scroller/arrow.png" alt="paper-plane" />
           </div>
         </div>
@@ -68,25 +104,25 @@
         </div>
         <img id="burger" src="css/images/hamburger.png" alt="hamburger" />
         <div id="menu" class="col-xs-8 col-sm-7 col-md-7 col-xs-offset-2 col-sm-offset-3 col-md-offset-3 cell">
-          <p>
+          <p data-name="home">
             HOME
           </p>
-          <p>
+          <p data-name="settings">
             ABOUT
           </p>
-          <p>
+          <p data-name="user">
             TEAM
           </p>
-          <p>
+          <p data-name="pen">
             SERVICES
           </p>
-          <p>
+          <p data-name="photo">
             PORTFOLIO
           </p>
-          <p>
+          <p data-name="bubble">
             BLOG
           </p>
-          <p>
+          <p data-name="plane">
             CONTACT
           </p>
         </div>
@@ -182,7 +218,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-8 col-sm-4 col-md-4 hidden-xs col-xs-offset-2 person">
+          <div class="col-xs-8 col-sm-4 col-md-4 col-xs-offset-2 person">
             <img class="portrait" src="css/images/staff/portrait1.png" alt="portrait" />
             <h2>John Ackman</h2>
             <p>
@@ -195,7 +231,7 @@
               <p>g</p>
             </div>
           </div>
-          <div class="col-xs-8 col-sm-4 col-md-4 hidden-xs col-xs-offset-2 person teamActive">
+          <div class="col-xs-8 col-sm-4 col-md-4 col-xs-offset-2 person teamActive">
             <img class="portrait" src="css/images/staff/portrait2.png" alt="portrait" />
             <h2>Anne Hathaway</h2>
             <p>
@@ -221,7 +257,7 @@
               <p>g</p>
             </div>
           </div>
-          <div class="col-xs-8 col-sm-4 col-md-4 hidden-xs col-xs-offset-2 person">
+          <div class="col-xs-8 col-sm-4 col-md-4 col-xs-offset-2 person">
             <img class="portrait" src="css/images/staff/portrait4.png" alt="portrait" />
             <h2>Nita Yelick</h2>
             <p>
@@ -234,7 +270,7 @@
               <p>g</p>
             </div>
           </div>
-          <div class="col-xs-8 col-sm-4 col-md-4 hidden-xs col-xs-offset-2 person">
+          <div class="col-xs-8 col-sm-4 col-md-4 col-xs-offset-2 person">
             <img class="portrait" src="css/images/staff/portrait3.png" alt="portrait" />
             <h2>Tucan</h2>
             <p>
@@ -496,7 +532,6 @@
       </footer>
    </div>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-   <!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
    <script src="http://cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
    <script type="text/javascript" src="js/script.js"></script>
   </body>

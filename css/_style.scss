@@ -27,9 +27,12 @@ body {
 .table {
   width: 100%;
 }
+.circle:hover {
+  cursor: pointer;
+}
 .title {
   position: relative;
-  margin-bottom: 6em;
+  margin-bottom: 4em;
   display: inline-block;
   img {
     position: absolute;
@@ -53,7 +56,7 @@ body {
   }
 }
 .invisible {
-  //display: none;
+  display: none;
 }
 .visible {
   display: block !important;
@@ -89,9 +92,22 @@ header {
     .headerNav:first-child {
       margin-right: 33.33333%;
     }
+    @media (max-width: 992px) {
+      #team {
+        top: 112%;
+        left: -15%;
+      }
+      #services {
+        top: 112%;
+        
+      }
+    }
     .hexagon {
       position: relative;
       img {
+        &:hover {
+          cursor:pointer;
+        }
         &:first-child {
           width: 85%;
         }
@@ -101,6 +117,34 @@ header {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
+        }
+      }
+      .tooltip {
+        position: absolute;
+        top: -15%;
+        left: 60%;
+        width: 50%;
+        display: none;
+        p {
+          font-size: 1.5em;
+          display: inline-block;
+          color: white;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 1000;
+          font-family: impact;
+          @media (max-width: 900px) {
+            font-size: 0.9em;
+          }
+        }
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
         }
       }
     }
@@ -122,7 +166,12 @@ header {
 /* --------------------------------------------------------------------
                               Second row
 ---------------------------------------------------------------------*/
-
+.fixedMenu {
+  position: fixed;
+  top: 0%;
+  z-index: 1000;
+  box-shadow: -1px 8px 21px 7px $purple;
+}
 .container-fluid > .row:nth-child(2) > .table{
   position: relative;
   h1 {
@@ -135,6 +184,7 @@ header {
     padding: 1em 15px;
     &:hover {
       color: $purple;
+      cursor:pointer;
     }
   }
   div:last-child {
@@ -352,18 +402,9 @@ header {
     padding: 3em 0px;
   }
   #nav {
-    margin-bottom: 6em;
-    div {
-      display: inline-block;
-      position: relative;
-      img {
-        &:nth-child(2) {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-      }
+    margin-bottom: 1em;
+    img:hover {
+      cursor:pointer;
     }
   }
   &>.row:nth-child(3) {
@@ -372,7 +413,6 @@ header {
     .person {
       display: inline-block;
       position: absolute;
-
       &:nth-child(1) {
         left: 0%
       }
@@ -389,27 +429,36 @@ header {
         left: 133.333%;
       }
       .portrait {
+        margin-top: 1em;
+        margin-bottom: 1em;
         width: 80%;
         border-radius: 50%;
+        box-shadow: -1px 11px 21px 7px rgba(0,0,0,0.75);
       }
     }
     .teamActive {
       position: relative;
       img {
-        border: 5px solid $purple;
+        box-shadow: -1px 11px 21px 7px $purple !important;
       }
     }
     @media (max-width: 768px) {
       .person {
-        display: block;
-        left: 0% !important;
-        position: relative;
-        img {
-          border: 5px solid $purple;
+        &:nth-child(1) {
+          left: -100%;
         }
-      }
-      .hidden-xs {
-        display: none;
+        &:nth-child(2) {
+          left: -0%;
+        }
+        &:nth-child(3) {
+          left: 100%;
+        }
+        &:nth-child(4) {
+          left: 200%;
+        }
+        &:nth-child(5) {
+          left: 300%;
+        }
       }
     }
   }
@@ -441,7 +490,9 @@ header {
 
 .container-fluid > .row:nth-child(7) {
   text-align: center;
+  padding-top: 6em;
   padding-bottom: 6em;
+  box-shadow: -1px 11px 21px 7px $purple;
   @media (max-width: 800px) {
     padding-bottom: 3em;
   }
@@ -515,6 +566,24 @@ header {
   .quote {
     display: none;
     margin-top: 3em;
+    div {
+      background-size: contain;
+    }
+    &:nth-child(1) div {
+      background-image: url("images/quote/isaac.jpg");
+    }
+    &:nth-child(2) div {
+      background-image: url("images/quote/oscar.jpg");
+    }
+    &:nth-child(3) div {
+      background-image: url("images/quote/steve.jpeg");
+    }
+    &:nth-child(4) div {
+      background-image: url("images/quote/theodore.jpg");
+    }
+    &:nth-child(5) div {
+      background-image: url("images/quote/douglas.jpg");
+    }
     .iAmAPhoto {
       width: 100px;
       height: 100px;
@@ -543,6 +612,7 @@ header {
     border-radius: 50%;
     &:hover {
       background-color: $grey;
+      cursor:pointer;
     }
   }
   .active {
@@ -558,6 +628,7 @@ header {
 .container-fluid > .row:nth-child(10) {
   text-align: center;
   padding: 6em 0px;
+  box-shadow: -1px 11px 21px 7px $purple !important;
   @media (max-width: 800px) {
     padding: 3em 0px;
   }
@@ -587,9 +658,11 @@ header {
     width: 80px;
     margin: 0px 5px;
     background-color: white;
+    box-shadow: -1px 11px 21px -7px rgba(0,0,0,0.75);
     &:hover {
       background-color: $purple;
       color: white;
+      cursor:pointer;
     }
   }
   .clicked {
@@ -605,14 +678,20 @@ header {
       margin-top: 3em;
       background-color: $purple;
       color: white;
+      display: none;
     }
     div:not(.imageContainer) {
       overflow: hidden;
       height: 400px;
       padding: 10px;
-      
+      @media (max-width: 600px) {
+        height: 300px;
+      }
       .imageContainer {
         height: 80%;
+        @media (max-width: 600px) {
+          height: 60%;
+        }
         img {
           width: 100%;
           height: 100%;
@@ -635,6 +714,7 @@ header {
 .container-fluid > .row:nth-child(11) {
   text-align: center;
   padding: 4em 0px;
+  box-shadow: -1px 11px 21px 7px $purple;
   @media (max-width: 800px) {
     padding: 2em 0px;
   }
@@ -739,6 +819,7 @@ header {
 .container-fluid > .row:nth-child(12) {
   text-align: center;
   padding: 2em 0px;
+  box-shadow: -1px 11px 21px 7px $purple;
   @media (max-width: 800px) {
     padding: 1em 0px;
   }
