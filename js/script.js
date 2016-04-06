@@ -20,7 +20,9 @@ var $width, $height;
 var $portfolioArray, $mainDiv, $detached, $temp;
 var $detachedArray = new Array;
 var $headerHeight;
-
+//var $imgContainer = $(".imageContainer"); why?
+var $galleryPopout;
+var $fixedMenu = $(".container-fluid>.row:nth-child(2)")
 
 
 
@@ -52,10 +54,10 @@ function $fixMenu() {
   $(document).scroll(function() {
     $headerHeight = parseInt($('header').height(), 10) + parseInt($('header').css("padding-top"), 10) + parseInt($('header').css("padding-bottom"), 10);
     if ($(document).scrollTop() >= $headerHeight) {
-      $(".container-fluid>.row:nth-child(2)").addClass("fixedMenu");
-      $("header").css("margin-bottom", $(".container-fluid>.row:nth-child(2)").height());
+      $fixedMenu.addClass("fixedMenu");
+      $("header").css("margin-bottom", $fixedMenu.height());
     } else {
-      $(".container-fluid>.row:nth-child(2)").removeClass("fixedMenu");
+      $fixedMenu.removeClass("fixedMenu");
       $("header").css("margin-bottom", "0px");
     }
   })
@@ -96,8 +98,35 @@ function $createPortfolioArray() {
     $createPortfolio();
   });
 }
+//function for adding event listeners to nav element on top of the image, called inside $createPortfoliio()
+function $eventListeners() {
+    $(".imageContainer").on("mouseover", function() {
+      $(this).children(":nth-child(2)").show();
+    });
+    $(".imageContainer").on("mouseout", function() {
+      $(this).children(":nth-child(2)").hide();
+    });
+    $(".imageContainer").on("click", function() {
+      //Create gallery popout element which consists of image and p element to close the popout
+      $galleryPopout = "<div id=\"galleryPopout\" class=\"row\"><img src=\"" + $(this).children(":first-child").attr("src") + "\"><p>X</p><div>"
+      //add it to the container so it has the same properties as .row
+      $(".container-fluid").append($galleryPopout);
+      //make sure it covers whole screen
+      $("#galleryPopout").css("height", $(window).height());
+      if ($(window).height() > $(window).width()) {
+        $("#galleryPopout").children(":first-child").css("width", "95%");
+      }
+      //hide the menu
+      $fixedMenu.hide();
+      //reverse all changes on X click
+      $("#galleryPopout p").on("click", function() {
+        $(this).parent().remove();
+        $fixedMenu.show();
+      })
+    });
+}
 function $createPortfolio() {
-  $mainDiv = "<div class=\"col-xs-6 col-sm-6 col-md-4\"><div class=\"imageContainer\"></div></div>";
+  $mainDiv = "<div class=\"col-xs-6 col-sm-6 col-md-4\"></div>";
   for (var i = $portfolioArray.length - 1; i >= 1 ; i--) {
     //add container for image, title and text
     $("#gallery").prepend($mainDiv);
@@ -106,9 +135,10 @@ function $createPortfolio() {
       $("#gallery div:first-child:not(.imageContainer)").addClass($portfolioArray[i].category[j]);
     }
     //add image, title and text to the container
-    $("#gallery div:first-child .imageContainer").prepend("<img src=" + $portfolioArray[i].img + "><h2>" + $portfolioArray[i].title
+    $("#gallery div:first-child:not(.imageContainer)").prepend("<div class=\"imageContainer\"><img src=" + $portfolioArray[i].img + "><nav class=\"hoverImage\"></nav></div><h2>" + $portfolioArray[i].title
     + "</h2><p>" + $portfolioArray[i].category.join(", ") + "</p>");
   }
+  $eventListeners();
   //detach all the images, save them into array
   $detached = $("#gallery div:not(.imageContainer)").detach();
   for (var n = 0; n < $detached.length; n++) {

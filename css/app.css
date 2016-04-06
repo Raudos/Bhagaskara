@@ -21,6 +21,29 @@ body {
 .container-fluid > .row {
   box-sizing: border-box;
   background-color: white; }
+.container-fluid #galleryPopout {
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  background-color: rgba(151, 155, 163, 0.7);
+  text-align: center; }
+  .container-fluid #galleryPopout img {
+    max-height: 100%;
+    width: 65%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+  .container-fluid #galleryPopout p {
+    display: inline-block;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    color: white;
+    font-size: 3em;
+    font-family: impact; }
+    .container-fluid #galleryPopout p:hover {
+      cursor: pointer;
+      color: #9f269b; }
 
 .table {
   width: 100%; }
@@ -439,15 +462,15 @@ header {
     .container-fluid > .row:nth-child(9) .quote div {
       background-size: contain; }
     .container-fluid > .row:nth-child(9) .quote:nth-child(1) div {
-      background-image: url("images/quote/isaac.jpg"); }
+      background-image: url("images/Quote/isaac.jpg"); }
     .container-fluid > .row:nth-child(9) .quote:nth-child(2) div {
-      background-image: url("images/quote/oscar.jpg"); }
+      background-image: url("images/Quote/oscar.jpg"); }
     .container-fluid > .row:nth-child(9) .quote:nth-child(3) div {
-      background-image: url("images/quote/steve.jpeg"); }
+      background-image: url("images/Quote/steve.jpeg"); }
     .container-fluid > .row:nth-child(9) .quote:nth-child(4) div {
-      background-image: url("images/quote/theodore.jpg"); }
+      background-image: url("images/Quote/theodore.jpg"); }
     .container-fluid > .row:nth-child(9) .quote:nth-child(5) div {
-      background-image: url("images/quote/douglas.jpg"); }
+      background-image: url("images/Quote/douglas.jpg"); }
     .container-fluid > .row:nth-child(9) .quote .iAmAPhoto {
       width: 100px;
       height: 100px;
@@ -463,11 +486,13 @@ header {
       font-weight: bold;
       padding: 15px; }
   .container-fluid > .row:nth-child(9) .quoteNav {
-    height: 15px;
-    width: 15px;
+    height: 25px;
+    width: 25px;
     border: 1px solid #676767;
     display: inline-block;
-    border-radius: 50%; }
+    border-radius: 50%;
+    margin: 5px;
+    box-shadow: -1px 5px 21px -7px rgba(0, 0, 0, 0.75); }
     .container-fluid > .row:nth-child(9) .quoteNav:hover {
       background-color: #676767;
       cursor: pointer; }
@@ -527,21 +552,33 @@ header {
       overflow: hidden;
       height: 400px;
       padding: 10px; }
+      .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) h2 {
+        color: black; }
+      .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) p {
+        color: #676767; }
       @media (max-width: 600px) {
         .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) {
           height: 300px; } }
       .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) .imageContainer {
-        height: 80%; }
+        height: 80%;
+        position: relative; }
+        .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) .imageContainer .hoverImage {
+          height: 100%;
+          width: 100%;
+          top: 0%;
+          position: absolute;
+          background-color: rgba(151, 155, 163, 0.5);
+          background-image: url("images/Portfolio/Thumbnails/Thumbnail_Hover/plus.png");
+          background-size: cover;
+          background-position: center;
+          display: none;
+          cursor: pointer; }
         @media (max-width: 600px) {
           .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) .imageContainer {
             height: 60%; } }
         .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) .imageContainer img {
           width: 100%;
           height: 100%; }
-        .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) .imageContainer h2 {
-          color: black; }
-        .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) .imageContainer p {
-          color: #676767; }
 
 /* --------------------------------------------------------------------
                               Eleventh row

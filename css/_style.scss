@@ -23,6 +23,33 @@ body {
   box-sizing: border-box;
   background-color: white;
 }
+#galleryPopout {
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  background-color: rgba(151, 155, 163, 0.7);
+  text-align: center;
+  img {
+    max-height: 100%;
+    width: 65%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  p {
+    display: inline-block;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    color: white;
+    font-size: 3em;
+    font-family: impact;
+    &:hover {
+      cursor: pointer;
+      color: $purple;
+    }
+  }
+}
 }
 .table {
   width: 100%;
@@ -99,7 +126,7 @@ header {
       }
       #services {
         top: 112%;
-        
+
       }
     }
     .hexagon {
@@ -570,19 +597,19 @@ header {
       background-size: contain;
     }
     &:nth-child(1) div {
-      background-image: url("images/quote/isaac.jpg");
+      background-image: url("images/Quote/isaac.jpg");
     }
     &:nth-child(2) div {
-      background-image: url("images/quote/oscar.jpg");
+      background-image: url("images/Quote/oscar.jpg");
     }
     &:nth-child(3) div {
-      background-image: url("images/quote/steve.jpeg");
+      background-image: url("images/Quote/steve.jpeg");
     }
     &:nth-child(4) div {
-      background-image: url("images/quote/theodore.jpg");
+      background-image: url("images/Quote/theodore.jpg");
     }
     &:nth-child(5) div {
-      background-image: url("images/quote/douglas.jpg");
+      background-image: url("images/Quote/douglas.jpg");
     }
     .iAmAPhoto {
       width: 100px;
@@ -605,11 +632,13 @@ header {
     }
   }
   .quoteNav {
-    height: 15px;
-    width: 15px;
+    height: 25px;
+    width: 25px;
     border: 1px solid $grey;
     display: inline-block;
     border-radius: 50%;
+    margin: 5px;
+    box-shadow: -1px 5px 21px -7px rgba(0, 0, 0, 0.75);
     &:hover {
       background-color: $grey;
       cursor:pointer;
@@ -684,23 +713,36 @@ header {
       overflow: hidden;
       height: 400px;
       padding: 10px;
+      h2 {
+        color: black;
+      }
+      p {
+        color: $grey;
+      }
       @media (max-width: 600px) {
         height: 300px;
       }
       .imageContainer {
         height: 80%;
+        position: relative;
+        .hoverImage {
+          height: 100%;
+          width: 100%;
+          top: 0%;
+          position: absolute;
+          background-color: rgba(151, 155, 163, 0.5);
+          background-image: url("images/Portfolio/Thumbnails/Thumbnail_Hover/plus.png");
+          background-size: cover;
+          background-position: center;
+          display: none;
+          cursor: pointer;
+        }
         @media (max-width: 600px) {
           height: 60%;
         }
         img {
           width: 100%;
           height: 100%;
-        }
-        h2 {
-          color: black;
-        }
-        p {
-          color: $grey;
         }
       }
     }
