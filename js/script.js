@@ -113,6 +113,8 @@ function $eventListeners() {
       $(".container-fluid").append($galleryPopout);
       //make sure it covers whole screen
       $("#galleryPopout").css("height", $(window).height());
+      $("#galleryPopout img").css("margin-top", ($(window).height() - $("#galleryPopout img").height()) / 2);
+      $("#galleryPopout img").css("margin-bottom", ($(window).height() - $("#galleryPopout img").height()) / 2);
       if ($(window).height() > $(window).width()) {
         $("#galleryPopout").children(":first-child").css("width", "95%");
       }
@@ -122,6 +124,22 @@ function $eventListeners() {
       $("#galleryPopout p").on("click", function() {
         $(this).parent().remove();
         $fixedMenu.show();
+      });
+      $(document).keyup(function(e) {
+       if (e.keyCode == 27) {
+         $("#galleryPopout").remove();
+         $fixedMenu.show();
+       }
+      });
+      $("#galleryPopout").click(function(e) {
+        //There was a problem with clicking, while clicking at photo it would also trigger the event listener and remove
+        //whole div
+        if (e.target.nodeName == "IMG") {
+          //do nothing
+        } else {
+          $(this).remove();
+          $fixedMenu.show();
+        }
       })
     });
 }

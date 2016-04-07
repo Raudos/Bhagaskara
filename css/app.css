@@ -16,7 +16,7 @@ span {
   color: #9f269b; }
 
 body {
-  background-color: #39286e; }
+  background-color: #392864; }
 
 .container-fluid > .row {
   box-sizing: border-box;
@@ -29,10 +29,7 @@ body {
   text-align: center; }
   .container-fluid #galleryPopout img {
     max-height: 100%;
-    width: 65%;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%); }
+    width: 65%; }
   .container-fluid #galleryPopout p {
     display: inline-block;
     position: absolute;
@@ -275,7 +272,8 @@ header {
       background-color: #9f269b;
       border: 0px;
       border-radius: 5px;
-      padding: 15px 2em; }
+      padding: 15px 2em;
+      cursor: no-drop; }
   .container-fluid > .row:nth-child(4) p {
     color: grey;
     font-size: 1.3em;
@@ -547,7 +545,8 @@ header {
       margin-top: 3em;
       background-color: #9f269b;
       color: white;
-      display: none; }
+      display: none;
+      cursor: no-drop; }
     .container-fluid > .row:nth-child(10) #gallery div:not(.imageContainer) {
       overflow: hidden;
       height: 400px;
