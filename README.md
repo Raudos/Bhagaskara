@@ -2,6 +2,8 @@
 Site layout based on PSD file provided by Coder's Lab and edited slightly by myself. 
 PSD file for comparison can be found on https://www.behance.net/gallery/16872707/Bhagaskara-Onepage-PSD-Template .
 
+Tools: Html, Css, Sass, Javascript jQuery, Gulp.
+
 Site itself is created with grid made durning lectures in Coder's Lab (https://github.com/Raudos/myGrid) which is based
 on all the basic features of Bootstrap plus few additions added on my own. For the live version css has added all prefixes,
 minified and gziped, Javascript file also got uglified.
